@@ -23,6 +23,15 @@ Chart.register(BarElement, Title, Tooltip);
 const Home = () => {
   const pathRef1=useRef(null)
   const {theme, setTheme}=useTheme()
+  const variants = {
+    visible: {
+      width: '80%',
+      transition: { ease: 'easeInOut', duration: 2 },
+    },
+    hidden: {
+      width: 0,
+    },
+  };
 
   let tl = gsap.timeline({ repeat: -1, delay: 1, repeatDelay: 1, yoyo: true });
 
@@ -624,7 +633,7 @@ const Home = () => {
       <div className="col-span-2 flex flex-col gap-4  px-[1.25rem] pt-[1.125rem] rounded-[0.875rem] dark:bg-[#262626] dark:border-none bg-white border-[1px] border-[#EDF2F7] h-[26.375rem]">
         <div className="w-full bg-transparent flex flex-row justify-between items-center">
           <div>
-            <p className="text-[#26282C] text-[1.125rem] font-bold leading-[1.625rem]">
+            <p className="text-[#26282C] dark:text-[#e5e5e5] text-[1.125rem] font-bold leading-[1.625rem]">
               Last Orders
             </p>
           </div>
@@ -649,7 +658,7 @@ const Home = () => {
                 {tableData.map((table, index) => (
                   <tr key={index}>
                     <td
-                      className={`py-2.5 text-[#3A3F51] dark:text-[#f5f5f5] flex flex-row gap-4 text-[1rem] items-center border-b border-[#EDF2F6] font-medium ${
+                      className={`py-2.5 text-[#3A3F51] dark:text-[#f5f5f5] flex flex-row gap-4 text-[1rem] items-center dark:border-none border-b border-[#EDF2F6] font-medium ${
                         table.name == "Phillip Lubin"
                           ? "border-[#ffffff]"
                           : "border-[#EDF2F6]"
@@ -664,14 +673,14 @@ const Home = () => {
                       />
                       {table.name}
                     </td>
-                    <td className="py-2 max-sm:hidden border-b text-[#737373] text-[1rem] border-[#EDF2F6]">
+                    <td className="py-2 dark:border-none max-sm:hidden border-b text-[#737373] text-[1rem] border-[#EDF2F6]">
                       {table.date}
                     </td>
-                    <td className="py-2 max-xs:hidden border-b text-[1rem] font-semibold dark:text-[#e5e5e5] text-[#0D062D] border-[#EDF2F6]">
+                    <td className="py-2 dark:border-none max-xs:hidden border-b text-[1rem] font-semibold dark:text-[#e5e5e5] text-[#0D062D] border-[#EDF2F6]">
                       {table.amount}
                     </td>
                     <td
-                      className={`py-2 border-b text-[1rem] border-[#EDF2F6] ${
+                      className={`py-2 border-b text-[1rem] dark:border-none border-[#EDF2F6] ${
                         table.status == "Paid"
                           ? "text-[#34CAA5] "
                           : " text-[#ED544E]"
@@ -679,7 +688,7 @@ const Home = () => {
                     >
                       {table.status}
                     </td>
-                    <td className="py-2 border-b border-[#EDF2F6] flex flex-row gap-2 max-sm:hidden items-center">
+                    <td className="py-2 dark:border-none border-b border-[#EDF2F6] flex flex-row gap-2 max-sm:hidden items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -715,7 +724,32 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white h-[33.875rem] rounded-[0.874rem]">D</div>
+      <div className="bg-white w-full dark:bg-[#262626] h-[33.875rem] rounded-[0.874rem]">
+        <div className="pl-[1.25rem] pt-[1rem] pb-[1rem] pr-[1.25rem]">
+          <div className="flex justify-between items-center w-full">
+          <p className="text-[#26282C] dark:text-[#e5e5e5] font-semibold text-[1.125rem] leading-[1.625rem]">
+          Top Platform
+          </p>
+          <p className="text-[#34CAA5]">
+            See All
+          </p>
+          </div>
+          <div className="">
+            <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
+            Book Bazaar
+            </p>
+          </div>
+          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+      <motion.div
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+
+        className="w-[60%] h-full rounded-full opacity-100 bg-[#6160DC]"
+      />
+    </div>
+        </div>
+      </div>
     </motion.div>
   );
 };

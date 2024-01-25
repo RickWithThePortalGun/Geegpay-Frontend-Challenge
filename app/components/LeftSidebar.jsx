@@ -53,7 +53,7 @@ const LeftSidebar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="max-lg:justify-between z-50 flex leftsidebar bg-white dark:bg-[#262626] dark:border-none w-[80px] border-r-[#EBECF2] border-[1px]"
+      className="max-lg:justify-between z-50 flex leftsidebar  dark:bg-[#262626] dark:border-none w-[80px] border-r-[#EBECF2] border-[1px]"
     >
       <div className="h-dvh flex flex-col justify-between bg-[#F7F8FA] dark:bg-[#262626] dark:border-none">
         <div className=" flex justify-center items-center flex-col gap-4 pt-[2rem]">

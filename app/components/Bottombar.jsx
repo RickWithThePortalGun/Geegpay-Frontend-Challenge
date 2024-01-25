@@ -2,22 +2,62 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import {motion} from "framer-motion";
 
 const Bottombar = () => {
- 
+  const {theme, setTheme}=useTheme()
+  const fadeIn = (direction, type, delay, duration) => {
+    return {
+      hidden: {
+        x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
+        y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+        opacity: 0,
+      },
+      show: {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        transition: {
+          type: type,
+          delay: delay,
+          duration: duration,
+          ease: "easeOut",
+        },
+      },
+    };
+  };
+  const slideIn = (direction, type, delay, duration) => {
+    return {
+      hidden: {
+        x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
+        y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
+      },
+      show: {
+        x: 0,
+        y: 0,
+        transition: {
+          type: type,
+          delay: delay,
+          duration: duration,
+          ease: "easeOut",
+        },
+      },
+    };
+  };
   return (
-    <section className="bottombar glassmorphism">
+    <motion.section variants={slideIn("up","tween", 1,0.5)} initial="hidden" whileInView="show" className="bottombar glassmorphism">
       <div className="bottombar_container">
             <div
               className={`flex-row justify-center items-center flex w-full bottomsidebar_link`}
             >
-               <div className="">
-              <svg
-                className="w-[1.5rem] h-[1.5rem]"
+               <div className="hover:scale-120 transition-transform transform ease-in duration-300">
+               <motion.svg
+                className=""
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+                width={theme=="dark"?"30":'24'}
+                height={theme=="dark"?"30":'24'}
+                viewBox="0 0 30 30"
                 fill="none"
               >
                 <path
@@ -25,20 +65,20 @@ const Bottombar = () => {
                   fill="#0D062D"
                 />
                 <path
-                  opacity="0.4"
+                  opacity="0.8"
                   d="M18.6699 2H16.7699C14.5899 2 13.4399 3.15 13.4399 5.33V7.23C13.4399 9.41 14.5899 10.56 16.7699 10.56H18.6699C20.8499 10.56 21.9999 9.41 21.9999 7.23V5.33C21.9999 3.15 20.8499 2 18.6699 2Z"
-                  fill="#0D062D"
+                  fill= {theme=='dark'?"#34caa5": "#0D062D"}
                 />
                 <path
                   d="M18.6699 13.4301H16.7699C14.5899 13.4301 13.4399 14.5801 13.4399 16.7601V18.6601C13.4399 20.8401 14.5899 21.9901 16.7699 21.9901H18.6699C20.8499 21.9901 21.9999 20.8401 21.9999 18.6601V16.7601C21.9999 14.5801 20.8499 13.4301 18.6699 13.4301Z"
-                  fill="#0D062D"
+                  fill= "#0D062D"
                 />
                 <path
-                  opacity="0.4"
+                  opacity="0.8"
                   d="M7.24 13.4301H5.34C3.15 13.4301 2 14.5801 2 16.7601V18.6601C2 20.8501 3.15 22.0001 5.33 22.0001H7.23C9.41 22.0001 10.56 20.8501 10.56 18.6701V16.7701C10.57 14.5801 9.42 13.4301 7.24 13.4301Z"
-                  fill="#0D062D"
+                  fill= {theme=='dark'?"#34caa5": "#0D062D"}
                 />
-              </svg>
+              </motion.svg>
               
             </div>
             <div className="">
@@ -205,7 +245,7 @@ const Bottombar = () => {
             </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
 
