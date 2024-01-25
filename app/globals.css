@@ -54,8 +54,33 @@ body{
 }
 
 .leftsidebar {
-  @apply fixed left-0 top-0 z-20 flex justify-between h-dvh flex-col overflow-hidden rounded-none max-md:hidden;
+  @apply fixed left-0 top-0 z-20 flex justify-between h-dvh flex-col rounded-none max-md:hidden;
 }
 .url_input {
   @apply block w-full border-[1px] border-[#DADDDD] bg-white py-2.5 pl-10 pr-12 font-medium focus:border-transparent rounded-3xl h-[48px]  focus:outline-none transition ease-in-out duration-500 focus:ring-0;
+}
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #34CAA5;
+  border-radius: 50px;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff transparent;
+}
+
+/* For Edge and IE */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #34CAA5;
+  border-radius: 50px;
 }
