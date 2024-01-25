@@ -325,7 +325,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex-shrink-0 pl-1">
-                <p className="text-[0.7rem] text-[#606060] leading-normal font-normal">
+                <p className="text-[0.6rem] text-[#606060] leading-normal font-normal">
                   vs. previous month
                 </p>
               </div>
@@ -432,7 +432,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex-shrink-0 pl-1">
-                <p className="text-[0.7rem] text-[#606060] leading-normal font-normal">
+                <p className="text-[0.6rem] text-[#606060] leading-normal font-normal">
                   vs. previous month
                 </p>
               </div>
@@ -536,7 +536,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex-shrink-0 pl-1">
-                <p className="text-[0.7rem] text-[#606060] leading-normal font-normal">
+                <p className="text-[0.6rem] text-[#606060] leading-normal font-normal">
                   vs. previous month
                 </p>
               </div>
@@ -636,7 +636,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex-shrink-0 pl-1">
-                <p className="text-[0.7rem] text-[#606060] leading-normal font-normal">
+                <p className="text-[0.6rem] text-[#606060] leading-normal font-normal">
                   vs. previous month
                 </p>
               </div>
@@ -765,6 +765,70 @@ const Home = () => {
               animate={inView ? "visible" : "hidden"}
               variants={variants}
               className="w-[60%] h-full rounded-full opacity-100 bg-[#6160DC]"
+            />
+          </div>
+          <div className="pt-[1rem] flex-row flex justify-between">
+            <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
+            $2,500,000
+            </p>
+            <p className="dark:text-[#e5e5e5] text-[#525252]">
++15%
+            </p>
+          </div>
+          <div className="">
+            <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
+              Altain Aisle
+            </p>
+          </div>
+          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+            <motion.div
+              ref={ref}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={variants2}
+              className="w-[60%] h-full rounded-full opacity-100 bg-[#54C5EB]"
+            />
+          </div>
+          <div className="pt-[1rem] flex-row flex justify-between">
+            <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
+            $2,500,000
+            </p>
+            <p className="dark:text-[#e5e5e5] text-[#525252]">
++15%
+            </p>
+          </div><div className="">
+            <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
+              Book Bazaar
+            </p>
+          </div>
+          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+            <motion.div
+              ref={ref}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={variants}
+              className="w-[60%] h-full rounded-full opacity-100 bg-[#6160DC]"
+            />
+          </div>
+          <div className="pt-[1rem] flex-row flex justify-between">
+            <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
+            $2,500,000
+            </p>
+            <p className="dark:text-[#e5e5e5] text-[#525252]">
++15%
+            </p>
+          </div><div className="">
+            <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
+              Altain Aisle
+            </p>
+          </div>
+          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+            <motion.div
+              ref={ref}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={variants2}
+              className="w-[60%] h-full rounded-full opacity-100 bg-[#54C5EB]"
             />
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
