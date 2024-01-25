@@ -46,7 +46,7 @@ body{
 }
 
 .main-container {
-  @apply min-h-screen pl-[4rem] pt-[6rem] max-md:pl-0 max-md:ml-0 bg-[#fafafa] w-full ml-6;
+  @apply min-h-screen pl-[4rem] pt-[6rem] max-md:pl-0 max-md:ml-0 bg-[#fafafa] dark:bg-[#171717]  transition-colors ease-in-out duration-300 w-full ml-6;
 }
 
 .topbar {
@@ -57,7 +57,7 @@ body{
   @apply fixed left-0 top-0 z-20 flex justify-between h-dvh flex-col rounded-none max-md:hidden;
 }
 .url_input {
-  @apply block w-full border-[1px] border-[#DADDDD] bg-white py-2.5 pl-10 pr-12 font-medium focus:border-transparent rounded-3xl h-[48px]  focus:outline-none transition ease-in-out duration-500 focus:ring-0;
+  @apply block w-full border-[1px] border-[#DADDDD] dark:placeholder-[#e5e5e5] dark:focus:border-white dark:bg-transparent bg-white py-2.5 pl-10 pr-12 font-medium focus:border-transparent rounded-3xl h-[48px]  focus:outline-none transition ease-in-out duration-500 focus:ring-0;
 }
 /* For WebKit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {

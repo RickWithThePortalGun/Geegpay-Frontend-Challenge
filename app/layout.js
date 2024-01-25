@@ -1,6 +1,7 @@
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { LeftSidebar,Topbar,Bottombar } from "./components";
+import Provider from "./provider";
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"],   variable: '--font-jakarta',});
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
+      <Provider>
       <body className={`${jakarta.className} bg-[#fafafa]`}>
       <Topbar />
         <main className="flex flex-row">
@@ -25,6 +27,7 @@ export default function RootLayout({ children }) {
         </main>
         <Bottombar />
       </body>
+      </Provider>
     </html>
   );
 }

@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
 import {motion} from "framer-motion";
+import { useTheme } from "next-themes";
 import {
   BarElement,
   Title,
@@ -14,16 +15,14 @@ import {
 import { tableData } from "./components/constants";
 import Image from "next/image";
 import {gsap} from "gsap";
-import {DrawSVGPlugin} from "gsap";
 
-gsap.registerPlugin(DrawSVGPlugin);
 Chart.register(CategoryScale);
 Chart.register(LinearScale);
 Chart.register(BarElement, Title, Tooltip);
 
 const Home = () => {
   const pathRef1=useRef(null)
-  const pathRef=useRef(null)
+  const {theme, setTheme}=useTheme()
 
   let tl = gsap.timeline({ repeat: -1, delay: 1, repeatDelay: 1, yoyo: true });
 
@@ -50,22 +49,6 @@ const Home = () => {
     responsive: true,
     aspectRatio: false,
     showTooltips: true,
-    // tooltips: {
-    //   enabled: false,
-    //   backgroundColor: "#090C2C",
-    //   usePointStyle: true,
-    //   titleAlign: "center",
-    //   titleColor: "#090c2c",
-    //   mode: "index",
-    //   intersect: true,
-    //   position: "nearest",
-    //   titleColor: "#ffffff",
-    //   titleAlign: "center",
-    //   titleMarginBottom: 2,
-    //   bodyColor: "#000000",
-    //   bodyAlign: "center",
-    //   borderWidth: 2,
-    // },
     plugins: {
       tooltip: {
         position: "average",
@@ -88,8 +71,10 @@ const Home = () => {
         position: "top",
         display: true,
         labels: {
+          color:"#E5E5E5",
           font: {
             family: "Plus Jakarta Sans",
+            color:"#E5E5E5"
           },
         },
       },
@@ -98,10 +83,6 @@ const Home = () => {
         display: true,
         text: "",
       },
-    },
-    labels: {
-      color: "#525252",
-      font: { size: "14px" },
     },
     scales: {
       y: {
@@ -191,17 +172,17 @@ const Home = () => {
   };
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}}  className="text-white z-10 grid grid-cols-3 h-full max-xl:grid-cols-1 gap-4 bg-transparent p-4">
-      <div className="col-span-2 h-[31.25rem] bg-white border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
+    <div className="col-span-2 dark:bg-[#262626] dark:border-none h-[31.25rem] bg-white border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
         <div className="pl-[1rem]  w-full pt-[1.25rem] pr-[1rem] flex justify-between items-center">
-          <p className="font-semibold text-typography text-[1.125rem] leading-[1.625rem]">
+          <p className="font-semibold dark:text-[#E5E5E5] text-typography text-[1.125rem] leading-[1.625rem]">
             Sales Trend
           </p>
           <div className="flex flex-row justify-center items-center gap-4">
-            <p className="text-[#3A3F51] font-medium leading-[1.375rem]">
+            <p className="text-[#3A3F51]  dark:text-[#E5E5E5] font-medium leading-[1.375rem]">
               Sort by:
             </p>
             <div className="text-[#3a3f51] h-[2rem] border-[1px] px-[0.75rem] flex justify-center items-center flex-row gap-2 rounded-full">
-              <p className="text-[0.75rem] max-md:hidden">Weekly</p>
+              <p className="text-[0.75rem] max-md:hidden dark:text-[#e5e5e5]">Weekly</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -211,7 +192,7 @@ const Home = () => {
               >
                 <path ref={pathRef1}
                   d="M3.72456 7.14131C3.94645 6.91942 4.29367 6.89925 4.53835 7.0808L4.60845 7.14131L9.99984 12.5324L15.3912 7.14131C15.6131 6.91942 15.9603 6.89925 16.205 7.0808L16.2751 7.14131C16.497 7.3632 16.5172 7.71042 16.3356 7.9551L16.2751 8.02519L10.4418 13.8585C10.2199 14.0804 9.87267 14.1006 9.62799 13.919L9.5579 13.8585L3.72456 8.02519C3.48048 7.78112 3.48048 7.38539 3.72456 7.14131Z"
-                  fill="black"
+                  fill={theme=="dark"? "#e5e5e5":"black"}
                 />
               </svg>
             </div>
@@ -222,7 +203,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-transparent h-[31.25rem]  max-md:h-fit lg:grid-cols-2 xl:grid-cols-2 max-sm:grid-cols-1 grid grid-cols-2 gap-4 max-md:col-span-2">
-        <div className="bg-white transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] min-w-fit rounded-[0.875rem]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] min-w-fit rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
@@ -264,12 +245,12 @@ const Home = () => {
                 <path
                   d="M102.994 8.46666H105V33L1 33V11.4536L4.00877 18.9203L5.20413 21.9069H6.60551L9.40827 18.9203L11.3702 21.907L17.256 21.9072L20.339 18.9204L22.0207 14.4396L24.4683 16.6803L26.6747 18.9203L27.3638 22.3333L28.7651 21.9069H30.4858L33.6952 11.4536L34.6981 14.4403L36.3028 11.4536L37.5063 16.6803L40.7156 7.72028L42.5209 11.4536H45.9308L49.5413 3.98696L51.7477 7.72028L54.6535 5.48L58.194 11.4533L60.4704 1L62.1179 11.4533L73.1072 15.9333L74.5113 12.9466H75.9153L79.1247 8.46666H82.334L83.5375 12.9466L88.3515 3.98666L90.3574 15.9333L91.3603 11.4533H93.5667L95.5726 1L97.5784 9.95999L98.5813 5.48H101.189L102.994 8.46666Z"
                   fill="url(#paint0_linear_2132_4599)"
-                  fill-opacity="0.16"
+                  fillOpacity="0.16"
                 />
                 <path
                   d="M105 8.4667H102.994L101.189 5.48004H98.5813L97.5784 9.96003L95.5726 1.00004L93.5667 11.4534H91.3603L90.3574 15.9333L88.3515 3.9867L83.5375 12.9467L82.334 8.4667H79.1247L75.9153 12.9467H74.5113L73.1072 15.9333L62.1179 11.4534L60.4704 1.00004L58.194 11.4534L54.6535 5.48004L51.7477 7.72032L49.5413 3.987L45.9308 11.4536H42.5209L40.7156 7.72032L37.5063 16.6803L36.3028 11.4536L34.6981 14.4403L33.6952 11.4536L30.4858 21.907H28.7651L27.3638 22.3334L26.6747 18.9203L24.4683 16.6803L22.0206 14.4396L20.339 18.9204L17.256 21.9073L11.3702 21.907L9.40827 18.9203L6.60551 21.907H5.20414L4.00877 18.9203L1 11.4536"
                   stroke="#66C87B"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                 />
                 <defs>
                   <linearGradient
@@ -280,17 +261,17 @@ const Home = () => {
                     y2="1"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#77B900" stop-opacity="0" />
-                    <stop offset="0.809892" stop-color="#77B900" />
+                    <stop stopColor="#77B900" stopOpacity="0" />
+                    <stop offset="0.809892" stopColor="#77B900" />
                   </linearGradient>
                 </defs>
               </svg>
             </div>
             <div className=" flex max-sm:py-10 flex-col pt-[0.625rem]">
-              <p className="leading-[1.625rem] tracking-wider font-normal text-[#898989] text-[1.125rem]">
+              <p className="leading-[1.625rem] tracking-wider dark:text-[#B2ABAB] font-normal text-[#898989] text-[1.125rem]">
                 Total Order
               </p>
-              <p className="text-[#3A3F51] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem]">
+              <p className="text-[#3A3F51] dark:text-[#e5e5e5] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem]">
                 350
               </p>
             </div>
@@ -307,14 +288,14 @@ const Home = () => {
                     <path
                       d="M0.5 5.5L3.5 2.5L5.5 4.5L9.5 0.5"
                       stroke="#34CAA5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M6 0.5H9.5V4"
                       stroke="#34CAA5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>{" "}
                   <p className="text-[0.75rem] text-[#34caa5]">23.5%</p>
@@ -328,7 +309,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex  flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
@@ -340,8 +321,8 @@ const Home = () => {
                   fill="none"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M7.57821 2.91194C4.8091 3.55436 2.75 6.03342 2.75 9C2.75 9.41421 2.41421 9.75 2 9.75C1.58579 9.75 1.25 9.41421 1.25 9C1.25 4.71579 4.71579 1.25 9 1.25C9.2702 1.25 9.51952 1.39534 9.65265 1.63047C9.78578 1.8656 9.78214 2.15417 9.64312 2.38587L8.59313 4.13587C8.38002 4.49105 7.91933 4.60623 7.56414 4.39312C7.20896 4.18001 7.09378 3.71932 7.30689 3.36413L7.57821 2.91194ZM22 14.25C22.4142 14.25 22.75 14.5858 22.75 15C22.75 19.2842 19.2842 22.75 15 22.75C14.7298 22.75 14.4805 22.6047 14.3474 22.3695C14.2142 22.1344 14.2179 21.8458 14.3569 21.6141L15.4069 19.8641C15.62 19.5089 16.0807 19.3938 16.4359 19.6069C16.791 19.82 16.9062 20.2807 16.6931 20.6359L16.4218 21.0881C19.1909 20.4456 21.25 17.9666 21.25 15C21.25 14.5858 21.5858 14.25 22 14.25Z"
                     fill="#34CAA5"
                   />
@@ -371,12 +352,12 @@ const Home = () => {
                 <path
                   d="M3.00584 8.46666H1L1 33L105 33V11.4536L101.991 18.9203L100.796 21.9069H99.3945L96.5917 18.9203L94.6298 21.907L88.744 21.9072L85.661 18.9204L83.9793 14.4396L81.5317 16.6803L79.3253 18.9203L78.6362 22.3333L77.2349 21.9069H75.5142L72.3048 11.4536L71.3019 14.4403L69.6972 11.4536L68.4937 16.6803L65.2844 7.72028L63.4791 11.4536H60.0692L56.4587 3.98696L54.2523 7.72028L51.3465 5.48L47.806 11.4533L45.5296 1L43.8821 11.4533L32.8928 15.9333L31.4887 12.9466H30.0847L26.8753 8.46666H23.666L22.4625 12.9466L17.6485 3.98666L15.6426 15.9333L14.6397 11.4533H12.4333L10.4274 1L8.4216 9.95999L7.41868 5.48H4.81109L3.00584 8.46666Z"
                   fill="url(#paint0_linear_2133_4687)"
-                  fill-opacity="0.16"
+                  fillOpacity="0.16"
                 />
                 <path
                   d="M1 8.4667H3.00584L4.81109 5.48004H7.41868L8.4216 9.96003L10.4274 1.00004L12.4333 11.4534H14.6397L15.6426 15.9333L17.6485 3.9867L22.4625 12.9467L23.666 8.4667H26.8753L30.0847 12.9467H31.4887L32.8928 15.9333L43.8821 11.4534L45.5296 1.00004L47.806 11.4534L51.3465 5.48004L54.2523 7.72032L56.4587 3.987L60.0692 11.4536H63.4791L65.2844 7.72032L68.4937 16.6803L69.6972 11.4536L71.3019 14.4403L72.3048 11.4536L75.5142 21.907H77.2349L78.6362 22.3334L79.3253 18.9203L81.5317 16.6803L83.9794 14.4396L85.661 18.9204L88.744 21.9073L94.6298 21.907L96.5917 18.9203L99.3945 21.907H100.796L101.991 18.9203L105 11.4536"
                   stroke="#ED544E"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                 />
                 <defs>
                   <linearGradient
@@ -387,17 +368,17 @@ const Home = () => {
                     y2="1"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#ED544E" stop-opacity="0" />
-                    <stop offset="0.809892" stop-color="#ED544E" />
+                    <stop stopColor="#ED544E" stopOpacity="0" />
+                    <stop offset="0.809892" stopColor="#ED544E" />
                   </linearGradient>
                 </defs>
               </svg>
             </div>
             <div className=" flex max-sm:py-10 flex-col pt-[0.625rem]">
-              <p className="leading-[1.625rem] tracking-wider font-normal text-[#898989] text-[1.125rem]">
+              <p className="leading-[1.625rem] dark:text-[#B2ABAB] tracking-wider font-normal text-[#898989] text-[1.125rem]">
                 Total Refund
               </p>
-              <p className="text-[#3A3F51] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem]">
+              <p className="text-[#3A3F51] dark:text-[#e5e5e5] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem]">
                 270
               </p>
             </div>
@@ -414,14 +395,14 @@ const Home = () => {
                     <path
                       d="M0.5 0.5L3.5 3.5L5.5 1.5L9.5 5.5"
                       stroke="#ED544E"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M6 5.5H9.5V2"
                       stroke="#ED544E"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                   <p className="text-[0.75rem] text-[#ED544E]">23.5%</p>
@@ -435,7 +416,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
@@ -475,12 +456,12 @@ const Home = () => {
                 <path
                   d="M3.00584 8.46666H1L1 33L105 33V11.4536L101.991 18.9203L100.796 21.9069H99.3945L96.5917 18.9203L94.6298 21.907L88.744 21.9072L85.661 18.9204L83.9793 14.4396L81.5317 16.6803L79.3253 18.9203L78.6362 22.3333L77.2349 21.9069H75.5142L72.3048 11.4536L71.3019 14.4403L69.6972 11.4536L68.4937 16.6803L65.2844 7.72028L63.4791 11.4536H60.0692L56.4587 3.98696L54.2523 7.72028L51.3465 5.48L47.806 11.4533L45.5296 1L43.8821 11.4533L32.8928 15.9333L31.4887 12.9466H30.0847L26.8753 8.46666H23.666L22.4625 12.9466L17.6485 3.98666L15.6426 15.9333L14.6397 11.4533H12.4333L10.4274 1L8.4216 9.95999L7.41868 5.48H4.81109L3.00584 8.46666Z"
                   fill="url(#paint0_linear_2133_4687)"
-                  fill-opacity="0.16"
+                  fillOpacity="0.16"
                 />
                 <path
                   d="M1 8.4667H3.00584L4.81109 5.48004H7.41868L8.4216 9.96003L10.4274 1.00004L12.4333 11.4534H14.6397L15.6426 15.9333L17.6485 3.9867L22.4625 12.9467L23.666 8.4667H26.8753L30.0847 12.9467H31.4887L32.8928 15.9333L43.8821 11.4534L45.5296 1.00004L47.806 11.4534L51.3465 5.48004L54.2523 7.72032L56.4587 3.987L60.0692 11.4536H63.4791L65.2844 7.72032L68.4937 16.6803L69.6972 11.4536L71.3019 14.4403L72.3048 11.4536L75.5142 21.907H77.2349L78.6362 22.3334L79.3253 18.9203L81.5317 16.6803L83.9794 14.4396L85.661 18.9204L88.744 21.9073L94.6298 21.907L96.5917 18.9203L99.3945 21.907H100.796L101.991 18.9203L105 11.4536"
                   stroke="#ED544E"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                 />
                 <defs>
                   <linearGradient
@@ -491,17 +472,17 @@ const Home = () => {
                     y2="1"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#ED544E" stop-opacity="0" />
-                    <stop offset="0.809892" stop-color="#ED544E" />
+                    <stop stopColor="#ED544E" stopOpacity="0" />
+                    <stop offset="0.809892" stopColor="#ED544E" />
                   </linearGradient>
                 </defs>
               </svg>
             </div>
             <div className=" flex flex-col max-sm:py-10 pt-[0.625rem]">
-              <p className="leading-[1.625rem] tracking-wider font-normal text-[#898989] text-[1.125rem]">
+              <p className="leading-[1.625rem] tracking-wider font-normal dark:text-[#B2ABAB] text-[#898989] text-[1.125rem]">
                 Average Sales
               </p>
-              <p className="text-[#3A3F51] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem] tracking-wider">
+              <p className="text-[#3A3F51] dark:text-[#e5e5e5] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem] tracking-wider">
                 1567
               </p>
             </div>
@@ -518,14 +499,14 @@ const Home = () => {
                     <path
                       d="M0.5 0.5L3.5 3.5L5.5 1.5L9.5 5.5"
                       stroke="#ED544E"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M6 5.5H9.5V2"
                       stroke="#ED544E"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                   <p className="text-[0.75rem] text-[#ED544E]">23.5%</p>
@@ -539,7 +520,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white transform transition-transform hover:scale-110 rounded-[0.875rem] border-[1px] border-[#EDF2F7]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 rounded-[0.875rem] border-[1px] border-[#EDF2F7]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
@@ -575,12 +556,12 @@ const Home = () => {
                 <path
                   d="M102.994 8.46666H105V33L1 33V11.4536L4.00877 18.9203L5.20413 21.9069H6.60551L9.40827 18.9203L11.3702 21.907L17.256 21.9072L20.339 18.9204L22.0207 14.4396L24.4683 16.6803L26.6747 18.9203L27.3638 22.3333L28.7651 21.9069H30.4858L33.6952 11.4536L34.6981 14.4403L36.3028 11.4536L37.5063 16.6803L40.7156 7.72028L42.5209 11.4536H45.9308L49.5413 3.98696L51.7477 7.72028L54.6535 5.48L58.194 11.4533L60.4704 1L62.1179 11.4533L73.1072 15.9333L74.5113 12.9466H75.9153L79.1247 8.46666H82.334L83.5375 12.9466L88.3515 3.98666L90.3574 15.9333L91.3603 11.4533H93.5667L95.5726 1L97.5784 9.95999L98.5813 5.48H101.189L102.994 8.46666Z"
                   fill="url(#paint0_linear_2132_4599)"
-                  fill-opacity="0.16"
+                  fillOpacity="0.16"
                 />
                 <path
                   d="M105 8.4667H102.994L101.189 5.48004H98.5813L97.5784 9.96003L95.5726 1.00004L93.5667 11.4534H91.3603L90.3574 15.9333L88.3515 3.9867L83.5375 12.9467L82.334 8.4667H79.1247L75.9153 12.9467H74.5113L73.1072 15.9333L62.1179 11.4534L60.4704 1.00004L58.194 11.4534L54.6535 5.48004L51.7477 7.72032L49.5413 3.987L45.9308 11.4536H42.5209L40.7156 7.72032L37.5063 16.6803L36.3028 11.4536L34.6981 14.4403L33.6952 11.4536L30.4858 21.907H28.7651L27.3638 22.3334L26.6747 18.9203L24.4683 16.6803L22.0206 14.4396L20.339 18.9204L17.256 21.9073L11.3702 21.907L9.40827 18.9203L6.60551 21.907H5.20414L4.00877 18.9203L1 11.4536"
                   stroke="#66C87B"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                 />
                 <defs>
                   <linearGradient
@@ -591,17 +572,17 @@ const Home = () => {
                     y2="1"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#77B900" stop-opacity="0" />
-                    <stop offset="0.809892" stop-color="#77B900" />
+                    <stop stopColor="#77B900" stopOpacity="0" />
+                    <stop offset="0.809892" stopColor="#77B900" />
                   </linearGradient>
                 </defs>
               </svg>
             </div>
             <div className=" flex flex-col pt-[0.625rem] max-sm:py-10">
-              <p className="leading-[1.625rem] tracking-wider font-normal text-[#898989] text-[1.125rem]">
+              <p className="leading-[1.625rem] dark:text-[#B2ABAB] tracking-wider font-normal text-[#898989] text-[1.125rem]">
                 Total Income
               </p>
-              <p className="text-[#3A3F51] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem] tracking-wider">
+              <p className="text-[#3A3F51] dark:text-[#e5e5e5] text-[1.5rem] pt-[0.313rem] font-semibold leading-[2rem] tracking-wider">
                 $350.000
               </p>
             </div>
@@ -618,14 +599,14 @@ const Home = () => {
                     <path
                       d="M0.5 5.5L3.5 2.5L5.5 4.5L9.5 0.5"
                       stroke="#34CAA5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M6 0.5H9.5V4"
                       stroke="#34CAA5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>{" "}
                   <p className="text-[0.75rem] text-[#34caa5]">23.5%</p>
@@ -640,7 +621,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-2 flex flex-col gap-4  px-[1.25rem] pt-[1.125rem] rounded-[0.875rem] bg-white border-[1px] border-[#EDF2F7] h-[26.375rem]">
+      <div className="col-span-2 flex flex-col gap-4  px-[1.25rem] pt-[1.125rem] rounded-[0.875rem] dark:bg-[#262626] dark:border-none bg-white border-[1px] border-[#EDF2F7] h-[26.375rem]">
         <div className="w-full bg-transparent flex flex-row justify-between items-center">
           <div>
             <p className="text-[#26282C] text-[1.125rem] font-bold leading-[1.625rem]">
@@ -668,7 +649,7 @@ const Home = () => {
                 {tableData.map((table, index) => (
                   <tr key={index}>
                     <td
-                      className={`py-2.5 text-[#3A3F51] flex flex-row gap-4 text-[1rem] items-center border-b border-[#EDF2F6] font-medium ${
+                      className={`py-2.5 text-[#3A3F51] dark:text-[#f5f5f5] flex flex-row gap-4 text-[1rem] items-center border-b border-[#EDF2F6] font-medium ${
                         table.name == "Phillip Lubin"
                           ? "border-[#ffffff]"
                           : "border-[#EDF2F6]"
@@ -686,7 +667,7 @@ const Home = () => {
                     <td className="py-2 max-sm:hidden border-b text-[#737373] text-[1rem] border-[#EDF2F6]">
                       {table.date}
                     </td>
-                    <td className="py-2 max-xs:hidden border-b text-[1rem] font-semibold text-[#0D062D] border-[#EDF2F6]">
+                    <td className="py-2 max-xs:hidden border-b text-[1rem] font-semibold dark:text-[#e5e5e5] text-[#0D062D] border-[#EDF2F6]">
                       {table.amount}
                     </td>
                     <td
@@ -723,7 +704,7 @@ const Home = () => {
                           fill="#292D32"
                         />
                       </svg>{" "}
-                      <p className="text-[#0D062D] text-[0.875rem]">View</p>
+                      <p className="text-[#0D062D] dark:text-[#e5e5e5] text-[0.875rem]">View</p>
                     </td>
                   </tr>
                 ))}
