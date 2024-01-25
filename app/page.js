@@ -15,7 +15,6 @@ import {
 } from "chart.js";
 import { tableData } from "./components/constants";
 import Image from "next/image";
-import { gsap } from "gsap";
 
 Chart.register(CategoryScale);
 Chart.register(LinearScale);
@@ -35,7 +34,7 @@ const Home = () => {
     hidden: {
       width: 0,
     },
-    delay:0.5
+    delay: 0.5,
   };
   const variants2 = {
     visible: {
@@ -45,7 +44,7 @@ const Home = () => {
     hidden: {
       width: 0,
     },
-    delay:0.5
+    delay: 0.5,
   };
   const variants3 = {
     visible: {
@@ -55,7 +54,7 @@ const Home = () => {
     hidden: {
       width: 0,
     },
-    delay:0.5
+    delay: 0.5,
   };
   const variants4 = {
     visible: {
@@ -65,25 +64,8 @@ const Home = () => {
     hidden: {
       width: 0,
     },
-    delay:0.5
+    delay: 0.5,
   };
-
-  let tl = gsap.timeline({ repeat: -1, delay: 1, repeatDelay: 1, yoyo: true });
-
-  useEffect(() => {
-    tl.fromTo(
-      pathRef1.current,
-      {
-        drawSVG: "0",
-      },
-      {
-        duration: 1,
-        drawSVG: "100%",
-      }
-    );
-  }, [tl, pathRef1]);
-
-
   Chart.defaults.font.family = "Plus Jakarta Sans";
   Chart.defaults.font.size = 12;
   Chart.defaults.font.weight = 600;
@@ -231,7 +213,7 @@ const Home = () => {
             <p className="text-[#3A3F51]  dark:text-[#E5E5E5] font-medium leading-[1.375rem]">
               Sort by:
             </p>
-            <div className="text-[#3a3f51] h-[2rem] border-[1px] px-[0.75rem] flex justify-center items-center flex-row gap-2 rounded-full">
+            <div className="text-[#3a3f51] h-[2rem] dark:border-[#34CAA5] border-[1px] px-[0.75rem] flex justify-center items-center flex-row gap-2 rounded-full">
               <p className="text-[0.75rem] max-md:hidden dark:text-[#e5e5e5]">
                 Weekly
               </p>
@@ -259,7 +241,7 @@ const Home = () => {
         <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] min-w-fit rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
-              <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
+              <div className="rounded-full p-2 border-[1px] dark:border-[#34CAA5] border-[#e6e6e6]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -320,7 +302,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className=" flex max-sm:py-10 flex-col pt-[0.625rem]">
+            <div className="flex max-md:py-10 flex-col pt-[0.625rem]">
               <p className="leading-[1.625rem] tracking-wider dark:text-[#B2ABAB] font-normal text-[#898989] text-[1.125rem]">
                 Total Order
               </p>
@@ -365,7 +347,7 @@ const Home = () => {
         <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex  flex-row justify-between w-full h-fit">
-              <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
+              <div className="rounded-full p-2 border-[1px] dark:border-[#34CAA5] border-[#e6e6e6]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -427,7 +409,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className=" flex max-sm:py-10 flex-col pt-[0.625rem]">
+            <div className=" flex max-md:py-10 flex-col pt-[0.625rem]">
               <p className="leading-[1.625rem] dark:text-[#B2ABAB] tracking-wider font-normal text-[#898989] text-[1.125rem]">
                 Total Refund
               </p>
@@ -472,7 +454,7 @@ const Home = () => {
         <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
-              <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
+              <div className="rounded-full p-2 dark:border-[#34CAA5] border-[1px] border-[#e6e6e6]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -531,7 +513,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className=" flex flex-col max-sm:py-10 pt-[0.625rem]">
+            <div className=" flex flex-col max-md:py-10 pt-[0.625rem]">
               <p className="leading-[1.625rem] tracking-wider font-normal dark:text-[#B2ABAB] text-[#898989] text-[1.125rem]">
                 Average Sales
               </p>
@@ -576,7 +558,7 @@ const Home = () => {
         <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 rounded-[0.875rem] border-[1px] border-[#EDF2F7]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
-              <div className="rounded-full p-2 border-[1px] border-[#e6e6e6]">
+              <div className="rounded-full p-2 border-[1px] dark:border-[#34CAA5] border-[#e6e6e6]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -631,7 +613,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className=" flex flex-col pt-[0.625rem] max-sm:py-10">
+            <div className=" flex flex-col pt-[0.625rem] max-md:py-10">
               <p className="leading-[1.625rem] dark:text-[#B2ABAB] tracking-wider font-normal text-[#898989] text-[1.125rem]">
                 Total Income
               </p>
@@ -708,9 +690,9 @@ const Home = () => {
                   <tr key={index}>
                     <td
                       className={`py-2.5 text-[#3A3F51] dark:text-[#f5f5f5] flex flex-row gap-4 text-[1rem] items-center dark:border-none border-b border-[#EDF2F6] font-medium ${
-                        table.name == "Phillip Lubin"
-                          ? "border-[#ffffff]"
-                          : "border-[#EDF2F6]"
+                        table.name != "Phillip Lubin"
+                          ? "border-[#edf2f6]"
+                          : "border-none"
                       }`}
                     >
                       <Image
@@ -722,14 +704,30 @@ const Home = () => {
                       />
                       {table.name}
                     </td>
-                    <td className="py-2 dark:border-none max-sm:hidden border-b text-[#737373] text-[1rem] border-[#EDF2F6]">
+                    <td
+                      className={`py-2 ${
+                        table.name == "Phillip Lubin"
+                          ? "border-none"
+                          : "border-[#EDF2F6]"
+                      } dark:border-none max-sm:hidden border-b text-[#737373] text-[1rem] border-[#EDF2F6]`}
+                    >
                       {table.date}
                     </td>
-                    <td className="py-2 dark:border-none max-xs:hidden border-b text-[1rem] font-semibold dark:text-[#e5e5e5] text-[#0D062D] border-[#EDF2F6]">
+                    <td
+                      className={`py-2 ${
+                        table.name == "Phillip Lubin"
+                          ? "border-none"
+                          : "border-[#EDF2F6]"
+                      } dark:border-none max-xs:hidden border-b text-[1rem] font-semibold dark:text-[#e5e5e5] text-[#0D062D] border-[#EDF2F6]`}
+                    >
                       {table.amount}
                     </td>
                     <td
-                      className={`py-2 border-b text-[1rem] dark:border-none border-[#EDF2F6] ${
+                      className={`py-2 ${
+                        table.name == "Phillip Lubin"
+                          ? "border-none"
+                          : "border-[#EDF2F6]"
+                      } border-b text-[1rem] dark:border-none border-[#EDF2F6] ${
                         table.status == "Paid"
                           ? "text-[#34CAA5] "
                           : " text-[#ED544E]"
@@ -737,7 +735,13 @@ const Home = () => {
                     >
                       {table.status}
                     </td>
-                    <td className="py-2 dark:border-none border-b border-[#EDF2F6] flex flex-row gap-2 max-sm:hidden items-center">
+                    <td
+                      className={`py-2 dark:border-none border-b border-[#EDF2F6] flex flex-row gap-2 max-sm:hidden items-center ${
+                        table.name == "Phillip Lubin"
+                          ? "border-none"
+                          : "border-[#EDF2F6]"
+                      }`}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -775,7 +779,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white h-fit dark:bg-[#262626] rounded-[0.874rem]">
+      <div className="bg-white h-fit dark:bg-[#262626] max-sm:mb-20 rounded-[0.874rem]">
         <div className="pl-[1.25rem] pt-[1rem] pb-[1rem] pr-[1.25rem]">
           <div className="flex justify-between items-center w-full">
             <p className="text-[#26282C] dark:text-[#e5e5e5] font-semibold text-[1.125rem] leading-[1.625rem]">
@@ -799,11 +803,9 @@ const Home = () => {
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
             <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
-            $2,500,000
+              $2,500,000
             </p>
-            <p className="dark:text-[#e5e5e5] text-[#525252]">
-+15%
-            </p>
+            <p className="dark:text-[#e5e5e5] text-[#525252]">+15%</p>
           </div>
           <div className="">
             <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
@@ -821,12 +823,11 @@ const Home = () => {
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
             <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
-            $1,800,000
+              $1,800,000
             </p>
-            <p className="dark:text-[#e5e5e5] text-[#525252]">
-+10%
-            </p>
-          </div><div className="">
+            <p className="dark:text-[#e5e5e5] text-[#525252]">+10%</p>
+          </div>
+          <div className="">
             <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
               Toy Troop
             </p>
@@ -842,12 +843,11 @@ const Home = () => {
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
             <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
-            $1,200,00
+              $1,200,00
             </p>
-            <p className="dark:text-[#e5e5e5] text-[#525252]">
-+8%
-            </p>
-          </div><div className="">
+            <p className="dark:text-[#e5e5e5] text-[#525252]">+8%</p>
+          </div>
+          <div className="">
             <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
               X Store
             </p>
@@ -863,11 +863,9 @@ const Home = () => {
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
             <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
-            $800,000
+              $800,000
             </p>
-            <p className="dark:text-[#e5e5e5] text-[#525252]">
-+6%
-            </p>
+            <p className="dark:text-[#e5e5e5] text-[#525252]">+6%</p>
           </div>
         </div>
       </div>
