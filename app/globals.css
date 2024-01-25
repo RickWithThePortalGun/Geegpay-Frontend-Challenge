@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +9,16 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+body{
+  font-family: var(--font-jakarta);
+}
+.green-cta{
+  background: rgba(52, 202, 165, 0.12);
+}
+.red-cta{
+  background:rgba(237, 84, 78, 0.12);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -16,18 +27,35 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.bottombar_container {
+  @apply flex items-center justify-between gap-3 max-sm:gap-5;
+}
+.bottombar {
+  @apply fixed bottom-0 z-10 w-full pl-4 rounded-t-3xl h-auto px-4 backdrop-blur-lg max-sm:px-4 md:hidden;
+}
+.bottomsidebar_link {
+  @apply relative flex justify-between gap-4 rounded-lg p-4;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.parent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 14px;
+  grid-row-gap: 9px;
+}
+
+.main-container {
+  @apply min-h-screen pl-[4rem] pt-[6rem] max-md:pl-0 max-md:ml-0 bg-[#fafafa] w-full ml-6;
+}
+
+.topbar {
+  @apply top-0 h-[4.5rem] fixed flex w-full items-center justify-between bg-[#fafafa] py-3;
+}
+
+.leftsidebar {
+  @apply fixed left-0 top-0 z-20 flex justify-between h-dvh flex-col overflow-hidden rounded-none max-md:hidden;
+}
+.url_input {
+  @apply block w-full border-[1px] border-[#DADDDD] bg-white py-2.5 pl-10 pr-12 font-medium focus:border-transparent rounded-3xl h-[48px]  focus:outline-none transition ease-in-out duration-500 focus:ring-0;
 }
