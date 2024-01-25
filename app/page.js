@@ -2,8 +2,9 @@
 import React, { useEffect, useRef } from "react";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { useInView } from "react-intersection-observer";
 import {
   BarElement,
   Title,
@@ -14,23 +15,27 @@ import {
 } from "chart.js";
 import { tableData } from "./components/constants";
 import Image from "next/image";
-import {gsap} from "gsap";
+import { gsap } from "gsap";
 
 Chart.register(CategoryScale);
 Chart.register(LinearScale);
 Chart.register(BarElement, Title, Tooltip);
 
 const Home = () => {
-  const pathRef1=useRef(null)
-  const {theme, setTheme}=useTheme()
+  const pathRef1 = useRef(null);
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+  });
+  const { theme, setTheme } = useTheme();
   const variants = {
     visible: {
-      width: '80%',
-      transition: { ease: 'easeInOut', duration: 2 },
+      width: "60%",
+      transition: { ease: "easeInOut", duration: 2 },
     },
     hidden: {
       width: 0,
     },
+    delay:0.5
   };
 
   let tl = gsap.timeline({ repeat: -1, delay: 1, repeatDelay: 1, yoyo: true });
@@ -39,15 +44,16 @@ const Home = () => {
     tl.fromTo(
       pathRef1.current,
       {
-        drawSVG: "0"
+        drawSVG: "0",
       },
       {
         duration: 1,
-        drawSVG: "100%"
+        drawSVG: "100%",
       }
     );
-  }, [tl,pathRef1]);
-  
+  }, [tl, pathRef1]);
+
+
   Chart.defaults.font.family = "Plus Jakarta Sans";
   Chart.defaults.font.size = 12;
   Chart.defaults.font.weight = 600;
@@ -80,10 +86,10 @@ const Home = () => {
         position: "top",
         display: true,
         labels: {
-          color:"#E5E5E5",
+          color: "#E5E5E5",
           font: {
             family: "Plus Jakarta Sans",
-            color:"#E5E5E5"
+            color: "#E5E5E5",
           },
         },
       },
@@ -180,8 +186,13 @@ const Home = () => {
     ],
   };
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}}  className="text-white z-10 grid grid-cols-3 h-full max-xl:grid-cols-1 gap-4 bg-transparent p-4">
-    <div className="col-span-2 dark:bg-[#262626] dark:border-none h-[31.25rem] bg-white border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="text-white z-10 grid grid-cols-3 h-full max-xl:grid-cols-1 gap-4 bg-transparent p-4"
+    >
+      <div className="col-span-2 dark:bg-[#262626] dark:border-none h-[31.25rem] bg-white border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
         <div className="pl-[1rem]  w-full pt-[1.25rem] pr-[1rem] flex justify-between items-center">
           <p className="font-semibold dark:text-[#E5E5E5] text-typography text-[1.125rem] leading-[1.625rem]">
             Sales Trend
@@ -191,7 +202,9 @@ const Home = () => {
               Sort by:
             </p>
             <div className="text-[#3a3f51] h-[2rem] border-[1px] px-[0.75rem] flex justify-center items-center flex-row gap-2 rounded-full">
-              <p className="text-[0.75rem] max-md:hidden dark:text-[#e5e5e5]">Weekly</p>
+              <p className="text-[0.75rem] max-md:hidden dark:text-[#e5e5e5]">
+                Weekly
+              </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -199,9 +212,10 @@ const Home = () => {
                 viewBox="0 0 20 21"
                 fill="none"
               >
-                <path ref={pathRef1}
+                <path
+                  ref={pathRef1}
                   d="M3.72456 7.14131C3.94645 6.91942 4.29367 6.89925 4.53835 7.0808L4.60845 7.14131L9.99984 12.5324L15.3912 7.14131C15.6131 6.91942 15.9603 6.89925 16.205 7.0808L16.2751 7.14131C16.497 7.3632 16.5172 7.71042 16.3356 7.9551L16.2751 8.02519L10.4418 13.8585C10.2199 14.0804 9.87267 14.1006 9.62799 13.919L9.5579 13.8585L3.72456 8.02519C3.48048 7.78112 3.48048 7.38539 3.72456 7.14131Z"
-                  fill={theme=="dark"? "#e5e5e5":"black"}
+                  fill={theme == "dark" ? "#e5e5e5" : "black"}
                 />
               </svg>
             </div>
@@ -647,14 +661,19 @@ const Home = () => {
               <thead>
                 <tr>
                   <th className="text-[#9CA4AB] text-start">Name</th>
-                  <th className="text-[#9CA4AB] max-sm:hidden text-start">Date</th>
-                  <th className="text-[#9CA4AB] max-xs:hidden text-start">Amount</th>
+                  <th className="text-[#9CA4AB] max-sm:hidden text-start">
+                    Date
+                  </th>
+                  <th className="text-[#9CA4AB] max-xs:hidden text-start">
+                    Amount
+                  </th>
                   <th className="text-[#9CA4AB] text-start">Status</th>
-                  <th className="text-[#9CA4AB] text-start max-sm:hidden">Invoice</th>
+                  <th className="text-[#9CA4AB] text-start max-sm:hidden">
+                    Invoice
+                  </th>
                 </tr>
               </thead>
               <tbody>
-
                 {tableData.map((table, index) => (
                   <tr key={index}>
                     <td
@@ -713,7 +732,9 @@ const Home = () => {
                           fill="#292D32"
                         />
                       </svg>{" "}
-                      <p className="text-[#0D062D] dark:text-[#e5e5e5] text-[0.875rem]">View</p>
+                      <p className="text-[#0D062D] dark:text-[#e5e5e5] text-[0.875rem]">
+                        View
+                      </p>
                     </td>
                   </tr>
                 ))}
@@ -727,27 +748,33 @@ const Home = () => {
       <div className="bg-white w-full dark:bg-[#262626] h-[33.875rem] rounded-[0.874rem]">
         <div className="pl-[1.25rem] pt-[1rem] pb-[1rem] pr-[1.25rem]">
           <div className="flex justify-between items-center w-full">
-          <p className="text-[#26282C] dark:text-[#e5e5e5] font-semibold text-[1.125rem] leading-[1.625rem]">
-          Top Platform
-          </p>
-          <p className="text-[#34CAA5]">
-            See All
-          </p>
+            <p className="text-[#26282C] dark:text-[#e5e5e5] font-semibold text-[1.125rem] leading-[1.625rem]">
+              Top Platform
+            </p>
+            <p className="text-[#34CAA5]">See All</p>
           </div>
           <div className="">
             <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
-            Book Bazaar
+              Book Bazaar
             </p>
           </div>
           <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
-      <motion.div
-        variants={variants}
-        initial="hidden"
-        animate="visible"
-
-        className="w-[60%] h-full rounded-full opacity-100 bg-[#6160DC]"
-      />
-    </div>
+            <motion.div
+              ref={ref}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={variants}
+              className="w-[60%] h-full rounded-full opacity-100 bg-[#6160DC]"
+            />
+          </div>
+          <div className="pt-[1rem] flex-row flex justify-between">
+            <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
+            $2,500,000
+            </p>
+            <p className="dark:text-[#e5e5e5] text-[#525252]">
++15%
+            </p>
+          </div>
         </div>
       </div>
     </motion.div>
