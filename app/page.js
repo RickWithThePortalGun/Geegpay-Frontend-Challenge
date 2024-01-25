@@ -30,7 +30,37 @@ const Home = () => {
   const variants = {
     visible: {
       width: "60%",
-      transition: { ease: "easeInOut", duration: 2 },
+      transition: { ease: "easeOut", duration: 2 },
+    },
+    hidden: {
+      width: 0,
+    },
+    delay:0.5
+  };
+  const variants2 = {
+    visible: {
+      width: "45%",
+      transition: { ease: "easeOut", duration: 2 },
+    },
+    hidden: {
+      width: 0,
+    },
+    delay:0.5
+  };
+  const variants3 = {
+    visible: {
+      width: "30%",
+      transition: { ease: "easeOut", duration: 2 },
+    },
+    hidden: {
+      width: 0,
+    },
+    delay:0.5
+  };
+  const variants4 = {
+    visible: {
+      width: "30%",
+      transition: { ease: "easeOut", duration: 2 },
     },
     hidden: {
       width: 0,
@@ -745,7 +775,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white w-full dark:bg-[#262626] h-[33.875rem] rounded-[0.874rem]">
+      <div className="bg-white h-fit dark:bg-[#262626] rounded-[0.874rem]">
         <div className="pl-[1.25rem] pt-[1rem] pb-[1rem] pr-[1.25rem]">
           <div className="flex justify-between items-center w-full">
             <p className="text-[#26282C] dark:text-[#e5e5e5] font-semibold text-[1.125rem] leading-[1.625rem]">
@@ -791,14 +821,14 @@ const Home = () => {
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
             <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
-            $2,500,000
+            $1,800,000
             </p>
             <p className="dark:text-[#e5e5e5] text-[#525252]">
-+15%
++10%
             </p>
           </div><div className="">
             <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
-              Book Bazaar
+              Toy Troop
             </p>
           </div>
           <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
@@ -806,20 +836,20 @@ const Home = () => {
               ref={ref}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              variants={variants}
-              className="w-[60%] h-full rounded-full opacity-100 bg-[#6160DC]"
+              variants={variants3}
+              className="w-[60%] h-full rounded-full opacity-100 bg-[#FFB74A]"
             />
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
             <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
-            $2,500,000
+            $1,200,00
             </p>
             <p className="dark:text-[#e5e5e5] text-[#525252]">
-+15%
++8%
             </p>
           </div><div className="">
             <p className="text-[#262626] dark:text-[#e5e5e5] py-6 text-[1.125rem] font-semibold leading-[1.625rem]">
-              Altain Aisle
+              X Store
             </p>
           </div>
           <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
@@ -827,16 +857,16 @@ const Home = () => {
               ref={ref}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              variants={variants2}
-              className="w-[60%] h-full rounded-full opacity-100 bg-[#54C5EB]"
+              variants={variants4}
+              className="w-[60%] h-full rounded-full opacity-100 bg-[#FF4A55]"
             />
           </div>
           <div className="pt-[1rem] flex-row flex justify-between">
             <p className="text-[#525252] dark:text-[#e5e5e5] font-normal leading-[1.625rem]">
-            $2,500,000
+            $800,000
             </p>
             <p className="dark:text-[#e5e5e5] text-[#525252]">
-+15%
++6%
             </p>
           </div>
         </div>
