@@ -4,14 +4,20 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import {motion} from "framer-motion"
 import { useTheme } from "next-themes";
+import { useState } from "react";
+import Menu from "./utils/Menu";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Topbar = () => {
   const { theme, setTheme } = useTheme();
+  const [isCalendarVisible, setCalendarVisible] = useState(false);
+  const [isMenuVisible, setMenuVisible] = useState(false);
+
+
 
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className="topbar z-20 border-b-[1px] grid grid-cols-3 gap-8 bg-[#E5EAEF] dark:border-none dark:bg-[#262626]">
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className="topbar relative z-20 border-b-[1px] grid grid-cols-3 gap-8 bg-[#E5EAEF] dark:border-none dark:bg-[#262626]">
       <div className="max-md:flex hidden pl-10">
       <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +65,7 @@ const Topbar = () => {
           <input type="text" placeholder="Search..." className=" flex-shrink-0 url_input" />
         </div>{" "}
         <div className="flex flex-row gap-6 items-center">
-          <div className="hidden xl:flex xl:opacity-100 opacity-0 transition-opacity duration-500 flex-row gap-2 items-center">
+          <div className="hidden xl:flex xl:opacity-100 opacity-0 transition-opacity duration-500 flex-row gap-2 items-center relative cursor-pointer" onClick={()=>setCalendarVisible(!isCalendarVisible)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -88,7 +94,15 @@ const Topbar = () => {
             >
               November 15, 2023
             </p>
+        
           </div>
+          {isCalendarVisible && (
+        <input
+          type="date"
+          className="absolute dark:bg-[#404040] focus:outline-none mb-4 max-xl:hidden rounded-3xl px-2 top-[80%]"
+          // Add more styles if needed
+        />
+      )}
           <div>
             <div className="flex w-[40px] max-md:hidden h-[40px] p-[11px] justify-center items-center gap-[6px] border-[0.769px] dark:border-[#34CAA5] border-[#dadddd] dark:border-[] rounded-full">
               <svg
@@ -107,7 +121,7 @@ const Topbar = () => {
               </svg>
             </div>
           </div>
-          <div className="flex px-[8px] max-md:px-[4px] py-[6px] flex-shrink-0 justify-center items-center gap-[12px] border-[1px] rounded-full dark:border-[#34CAA5] border-[#dadddd]">
+          <div onClick={()=>setMenuVisible(!isMenuVisible)} className="flex cursor-pointer px-[8px] max-md:px-[4px] py-[6px] flex-shrink-0 justify-center items-center gap-[12px] border-[1px] rounded-full dark:border-[#34CAA5] border-[#dadddd]">
             <div className="rounded-full"><Image src={`/assets/aiimg.JPG`} width={38} className="mx-[0.5rem] flex-shrink-0 rounded-full w-[2.5rem] h-[2.5rem]" height={38}/></div>
             <div className="max-lg:hidden flex items-end flex-col">
               <div className="text-[16px] flex justify-center items-end">Oyeniyi Victor</div> <div className="text-[14px] dark:text-[#34CAA5] text-[#787486]">iamgojosatoru@icloud.com</div>
@@ -117,7 +131,11 @@ const Topbar = () => {
   <path d="M3.19841 6.20675C3.43891 5.95614 3.81525 5.93336 4.08045 6.1384L4.15643 6.20675L10 12.2955L15.8436 6.20675C16.0841 5.95614 16.4604 5.93336 16.7256 6.1384L16.8016 6.20675C17.0421 6.45735 17.064 6.84951 16.8672 7.12585L16.8016 7.20502L10.479 13.7933C10.2385 14.0439 9.86217 14.0666 9.59697 13.8616L9.52099 13.7933L3.19841 7.20502C2.93386 6.92935 2.93386 6.48241 3.19841 6.20675Z" fill={theme=="dark"? "#e5e5e5" :""}/>
 </svg>
 </div>
+
           </div>
+          {isMenuVisible && (
+        <Menu isMenuVisible={isMenuVisible}/>
+      )}
         </div>
       </div>
     </motion.div>
