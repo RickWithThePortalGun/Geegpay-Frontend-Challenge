@@ -15,6 +15,7 @@ import {
 } from "chart.js";
 import { tableData } from "./components/constants";
 import Image from "next/image";
+import { useState } from "react";
 
 Chart.register(CategoryScale);
 Chart.register(LinearScale);
@@ -22,10 +23,17 @@ Chart.register(BarElement, Title, Tooltip);
 
 const Home = () => {
   const pathRef1 = useRef(null);
+  const [selectedValue, setSelectedValue] = useState('Weekly');
+
+  const handlePClick = (value) => {
+    setSelectedValue(value);
+  };
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
   const { theme, setTheme } = useTheme();
+  const [isMenuVisible, setMenuVisible] = useState(false);
+
   const variants = {
     visible: {
       width: "60%",
@@ -197,6 +205,7 @@ const Home = () => {
       },
     ],
   };
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -209,13 +218,13 @@ const Home = () => {
           <p className="font-semibold dark:text-[#E5E5E5] text-typography text-[1.125rem] leading-[1.625rem]">
             Sales Trend
           </p>
-          <div className="flex flex-row justify-center items-center gap-4">
+          <div onClick={() => setMenuVisible(!isMenuVisible)} className="flex relative flex-row justify-center items-center gap-4">
             <p className="text-[#3A3F51]  dark:text-[#E5E5E5] font-medium leading-[1.375rem]">
               Sort by:
             </p>
-            <div className="text-[#3a3f51] h-[2rem] dark:border-[#34CAA5] border-[1px] px-[0.75rem] flex justify-center items-center flex-row gap-2 rounded-full">
+            <div  className="text-[#3a3f51] h-[2rem] dark:border-[#34CAA5] border-[1px] px-[0.75rem] flex justify-center items-center flex-row gap-2 rounded-full">
               <p className="text-[0.75rem] max-md:hidden dark:text-[#e5e5e5]">
-                Weekly
+                {selectedValue}
               </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -230,6 +239,21 @@ const Home = () => {
                   fill={theme == "dark" ? "#e5e5e5" : "black"}
                 />
               </svg>
+              {isMenuVisible ? (
+              <div className={`absolute max-sm:w-[8rem] justify-center flex bg-[#ffffff] border-[1px] border-[#edf2f7] max-smallest:right-[0.2rem] right-[0.5rem] top-[110%] h-fit w-[6em] dark:border-b-[#34CAA5] dark:border-b-[1px] dark:border-t-0 dark:border-r-0 dark:border-l-0 dark:bg-[#252525] rounded-lg overflow-hidden`}>
+                <div className="flex flex-col gap-2  pl-2 pt-2 pb-2">
+                  <p onClick={() => handlePClick('Weekly')} className=" hover:bg-[#e5e5e5] text-[#272727] cursor-pointer dark:text-[#e5e5e5] max-sm:text-[0.8rem] dark:hover:text-[#272727] dark:hover:bg-[#e5e5e5] px-2 rounded-lg">
+                    Weekly
+                  </p>
+                  <p onClick={() => handlePClick('Monthly')} className=" hover:bg-[#e5e5e5] text-[#272727] cursor-pointer max-sm:text-[0.8rem] dark:text-[#e5e5e5] dark:hover:text-[#272727] dark:hover:bg-[#e5e5e5] px-2 rounded-lg">
+                    Monthly
+                  </p>
+                  <p onClick={() => handlePClick('Yearly')} className="hover:bg-[#e5e5e5] text-[#272727] cursor-pointer max-sm:text-[0.8rem] dark:text-[#e5e5e5]  dark:hover:text-[#272727] dark:hover:bg-[#e5e5e5] px-2 rounded-lg">
+                    Yearly
+                  </p>
+                </div>
+                </div>
+              ):""}
             </div>
           </div>
         </div>

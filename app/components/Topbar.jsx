@@ -158,7 +158,7 @@ const Topbar = () => {
                 height={38}
               />
             </div>
-            <div className="max-lg:hidden flex items-end flex-col">
+            <div className="max-lg:hidden flex items-end flex-col pr-2">
               <div className="text-[16px] flex justify-center items-end">
                 Oyeniyi Victor
               </div>{" "}
@@ -166,7 +166,7 @@ const Topbar = () => {
                 iamgojosatoru@icloud.com
               </div>
             </div>
-            <div>
+            <div className="xl:hidden">
               {isMenuVisible ? (
                 <svg
                   style={{ transform: "rotate(180deg)" }}
