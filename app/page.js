@@ -792,7 +792,7 @@ const Home = () => {
               Book Bazaar
             </p>
           </div>
-          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+          <div className="w-full rounded-full dark:bg-[#b2abab] bg-[#fafafa] h-[0.75rem] dark:opacity-80 opacity-100">
             <motion.div
               ref={ref}
               initial="hidden"
@@ -812,7 +812,7 @@ const Home = () => {
               Altain Aisle
             </p>
           </div>
-          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+          <div className="w-full rounded-full dark:bg-[#b2abab] bg-[#fafafa] h-[0.75rem] dark:opacity-80 opacity-100">
             <motion.div
               ref={ref}
               initial="hidden"
@@ -832,7 +832,7 @@ const Home = () => {
               Toy Troop
             </p>
           </div>
-          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+          <div className="w-full rounded-full dark:bg-[#b2abab] bg-[#fafafa] h-[0.75rem] dark:opacity-80 opacity-100">
             <motion.div
               ref={ref}
               initial="hidden"
@@ -852,7 +852,7 @@ const Home = () => {
               X Store
             </p>
           </div>
-          <div className="w-full rounded-full bg-[#b2abab] h-[0.75rem] dark:opacity-80 opacity-100">
+          <div className="w-full rounded-full dark:bg-[#b2abab] bg-[#fafafa] h-[0.75rem] dark:opacity-80 opacity-100">
             <motion.div
               ref={ref}
               initial="hidden"
