@@ -22,11 +22,11 @@ const Menu = ({isMenuVisible}) => {
           height={50}
         />
       </div>
-      <div className="flex dark:text-[#e5e5e5] justify-center items-center pt-2 font-semibold text-[1.5rem] max-sm:text-[1rem]">
+      <div className="max-lg:flex hidden text-[#26282C] dark:text-[#e5e5e5] justify-center items-center pt-2 font-semibold text-[1.5rem] max-sm:text-[1rem]">
         Oyeniyi Victor
       </div>
-      <div className="flex justify-center">
-        <p className="text-[0.75rem] text-[#34CAA5]">
+      <div className="hidden max-lg:flex justify-center">
+        <p className="text-[0.75rem] text-[#787486] dark:text-[#34CAA5]">
           iamgojosatoru@icloud.com
         </p>
       </div>

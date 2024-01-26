@@ -238,7 +238,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-transparent h-[31.25rem]  max-md:h-fit lg:grid-cols-2 xl:grid-cols-2 max-sm:grid-cols-1 grid grid-cols-2 gap-4 max-md:col-span-2">
-        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] min-w-fit rounded-[0.875rem]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-105 border-[1px] border-[#EDF2F7] min-w-fit rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 border-[1px] dark:border-[#34CAA5] border-[#e6e6e6]">
@@ -302,7 +302,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className="flex max-md:py-10 flex-col pt-[0.625rem]">
+            <div className="flex max-sm:justify-center max-sm:items-center  max-md:py-10 flex-col pt-[0.625rem]">
               <p className="leading-[1.625rem] tracking-wider dark:text-[#B2ABAB] font-normal text-[#898989] text-[1.125rem]">
                 Total Order
               </p>
@@ -344,7 +344,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-105 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex  flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 border-[1px] dark:border-[#34CAA5] border-[#e6e6e6]">
@@ -409,7 +409,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className=" flex max-md:py-10 flex-col pt-[0.625rem]">
+            <div className=" max-sm:justify-center max-sm:items-center flex max-md:py-10 flex-col pt-[0.625rem]">
               <p className="leading-[1.625rem] dark:text-[#B2ABAB] tracking-wider font-normal text-[#898989] text-[1.125rem]">
                 Total Refund
               </p>
@@ -451,7 +451,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-105 border-[1px] border-[#EDF2F7] rounded-[0.875rem]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 dark:border-[#34CAA5] border-[1px] border-[#e6e6e6]">
@@ -513,7 +513,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className=" flex flex-col max-md:py-10 pt-[0.625rem]">
+            <div className=" max-sm:justify-center max-sm:items-center flex flex-col max-md:py-10 pt-[0.625rem]">
               <p className="leading-[1.625rem] tracking-wider font-normal dark:text-[#B2ABAB] text-[#898989] text-[1.125rem]">
                 Average Sales
               </p>
@@ -555,7 +555,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-110 rounded-[0.875rem] border-[1px] border-[#EDF2F7]">
+        <div className="bg-white dark:bg-[#262626] dark:border-none transform transition-transform hover:scale-105 rounded-[0.875rem] border-[1px] border-[#EDF2F7]">
           <div className="p-[1rem] h-full justify-between flex flex-col">
             <div className="flex flex-row justify-between w-full h-fit">
               <div className="rounded-full p-2 border-[1px] dark:border-[#34CAA5] border-[#e6e6e6]">
@@ -613,7 +613,7 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <div className=" flex flex-col pt-[0.625rem] max-md:py-10">
+            <div className=" flex max-sm:justify-center max-sm:items-center flex-col pt-[0.625rem] max-md:py-10">
               <p className="leading-[1.625rem] dark:text-[#B2ABAB] tracking-wider font-normal text-[#898989] text-[1.125rem]">
                 Total Income
               </p>
