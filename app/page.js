@@ -23,7 +23,7 @@ Chart.register(BarElement, Title, Tooltip);
 const Home = () => {
   const pathRef1 = useRef(null);
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
   });
   const { theme, setTheme } = useTheme();
   const variants = {
