@@ -9,12 +9,24 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     setMounted(true);
+  
+    const darkTheme =
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+  
+    if (darkTheme) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
+  
   if (!mounted) {
     return <>{children}</>;
   }
   return (
-    <ThemeProvider className enableSystem attribute="class">
+    <ThemeProvider enableSystem attribute="class">
       {children}
     </ThemeProvider>
   );
