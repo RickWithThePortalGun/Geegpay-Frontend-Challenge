@@ -5,15 +5,30 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useState } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 import Menu from "./utils/Menu";
+import gsap from "gsap";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Topbar = () => {
+  const svgRef = useRef(null);
   const { theme, setTheme } = useTheme();
   const [isCalendarVisible, setCalendarVisible] = useState(false);
   const [isMenuVisible, setMenuVisible] = useState(false);
-
+  useEffect(() => {
+    gsap.fromTo(
+      svgRef.current,
+      { rotation: 0 },
+      {
+        rotation: 360,
+        repeat:-1,
+        duration: 2,
+        ease: "power4.inOut", 
+      }
+    );
+  },[]);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,6 +38,7 @@ const Topbar = () => {
     >
       <div className="max-md:flex hidden pl-10">
         <svg
+         ref={svgRef}
           xmlns="http://www.w3.org/2000/svg"
           width="40"
           height="40"
@@ -132,7 +148,7 @@ const Topbar = () => {
           </div>
           <div
             onClick={() => setMenuVisible(!isMenuVisible)}
-            className="flex cursor-pointer px-[8px] max-md:px-[4px] py-[6px] flex-shrink-0 justify-center items-center gap-[12px] border-[1px] rounded-full dark:border-[#34CAA5] border-[#dadddd]"
+            className="flex cursor-pointer px-[8px] max-md:px-[4px] py-[6px] flex-shrink-0 justify-center items-center gap-[6px] border-[1px] rounded-full dark:border-[#34CAA5] border-[#dadddd]"
           >
             <div className="rounded-full">
               <Image

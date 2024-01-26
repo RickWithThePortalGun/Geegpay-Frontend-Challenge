@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html suppressHydrationWarning lang="en">
       <Provider>
-      <body className={`${jakarta.className} bg-[#fafafa]`}>
+      <body className={`${jakarta.className} bg-[#fafafa] dark:bg-[#171717] `}>
       <Topbar />
         <main className="flex flex-row">
           <LeftSidebar />

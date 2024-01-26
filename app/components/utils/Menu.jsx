@@ -13,7 +13,7 @@ const Menu = ({isMenuVisible}) => {
       isMenuVisible
         ? "translate-x-0 scale-100"
         : " max-h-0 scale-y-50 -translate-y-1/4"
-    }   max-sm:w-[15rem] bg-[#ffffff] max-smallest:right-[0.2rem] right-[2rem] top-[110%] h-fit w-[20em] dark:border-b-[#34CAA5] dark:border-b dark:bg-[#252525] rounded-lg overflow-hidden`}>
+    }   max-sm:w-[15rem] bg-[#ffffff] border-[1px] border-[#edf2f7] max-smallest:right-[0.2rem] right-[2rem] top-[110%] h-fit w-[20em] dark:border-b-[#34CAA5] dark:border-b-[1px] dark:border-t-0 dark:border-r-0 dark:border-l-0 dark:bg-[#252525] rounded-lg overflow-hidden`}>
       <div className="flex hidden pt-2 justify-center">
         <Image
           src={`/assets/aiimg.JPG`}

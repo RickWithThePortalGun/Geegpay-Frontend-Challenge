@@ -14,7 +14,7 @@ const Provider = ({ children }) => {
     return <>{children}</>;
   }
   return (
-    <ThemeProvider enableSystem attribute="class">
+    <ThemeProvider className enableSystem attribute="class">
       {children}
     </ThemeProvider>
   );

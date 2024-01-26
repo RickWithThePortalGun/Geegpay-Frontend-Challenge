@@ -10,23 +10,26 @@ import { useTheme } from "next-themes";
 const LeftSidebar = () => {
   const svgRef = useRef(null);
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false); 
-
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    gsap.to(svgRef.current, {
-      rotation: 360,
-      duration: 2,
-      repeat: -1,
-      ease: "power4.inOut",
-    });
-  
     setMounted(true);
-  }, []); 
-  
+    gsap.fromTo(
+      svgRef.current,
+      { rotation: 0 },
+      {
+        rotation: 360,
+        repeat:-1,
+        duration: 2, // Adjust the duration as needed
+        ease: "power4.inOut", // Choose the easing function
+         // Set mounted to true after the animation
+      }
+    );
+  });
+
   if (!mounted) {
     return null;
   }
-  
+
   const fadeIn = (direction, type, delay, duration) => {
     return {
       hidden: {
@@ -53,7 +56,7 @@ const LeftSidebar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="max-lg:justify-between z-50 flex leftsidebar overflow-hidden max-w-8xl mx-auto dark:bg-[#262626] dark:border-none w-[80px] border-r-[#EBECF2] border-[1px]"
+      className="max-lg:justify-between z-50 flex leftsidebar max-w-8xl mx-auto dark:bg-[#262626] dark:border-none w-[80px] border-r-[#EBECF2] border-[1px]"
     >
       <div className="h-dvh flex flex-col justify-between bg-[#F7F8FA] dark:bg-[#262626] dark:border-none">
         <div className=" flex justify-center items-center flex-col gap-4 pt-[2rem]">
@@ -76,33 +79,29 @@ const LeftSidebar = () => {
           </div>
           <div className="pt-[40px] gap-[2rem] flex flex-col">
             <div className="w-full flex items-center justify-center ">
-              <motion.svg
-                variants={fadeIn("down", "spring", 0.7, 1)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="w-[1.5rem] hover:scale-110 transition-transform ease-in duration-150 h-[1.5rem]"
+            <motion.svg
+                className=""
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+                width={theme=="dark"?"30":'24'}
+                height={theme=="dark"?"30":'24'}
+                viewBox="0 0 30 30"
                 fill="none"
               >
                 <path
                   d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z"
-                  fill="#0D062D"
+                  fill={theme=='dark'?"#B2ABAB": "#0D062D"} 
                 />
                 <path
-                  opacity="0.4"
+                  opacity="0.8"
                   d="M18.6699 2H16.7699C14.5899 2 13.4399 3.15 13.4399 5.33V7.23C13.4399 9.41 14.5899 10.56 16.7699 10.56H18.6699C20.8499 10.56 21.9999 9.41 21.9999 7.23V5.33C21.9999 3.15 20.8499 2 18.6699 2Z"
                   fill= {theme=='dark'?"#34caa5": "#0D062D"}
                 />
                 <path
                   d="M18.6699 13.4301H16.7699C14.5899 13.4301 13.4399 14.5801 13.4399 16.7601V18.6601C13.4399 20.8401 14.5899 21.9901 16.7699 21.9901H18.6699C20.8499 21.9901 21.9999 20.8401 21.9999 18.6601V16.7601C21.9999 14.5801 20.8499 13.4301 18.6699 13.4301Z"
-                  fill= "#0D062D"
+                  fill={theme=='dark'?"#B2ABAB": "#0D062D"} 
                 />
                 <path
-                  opacity="0.4"
+                  opacity="0.8"
                   d="M7.24 13.4301H5.34C3.15 13.4301 2 14.5801 2 16.7601V18.6601C2 20.8501 3.15 22.0001 5.33 22.0001H7.23C9.41 22.0001 10.56 20.8501 10.56 18.6701V16.7701C10.57 14.5801 9.42 13.4301 7.24 13.4301Z"
                   fill= {theme=='dark'?"#34caa5": "#0D062D"}
                 />
@@ -117,7 +116,7 @@ const LeftSidebar = () => {
               >
                 <path
                   d="M6.53467e-06 3.02509C7.11773e-06 1.42129 1.40951 0.182713 3 0.388889V21C1.34315 21 4.88293e-07 19.6569 1.09063e-06 18L6.53467e-06 3.02509Z"
-                  fill={theme=="dark"? "#34caa5" : "#0D062D"}
+                  fill={theme == "dark" ? "#34caa5" : "#0D062D"}
                 />
               </svg>
             </div>
@@ -435,7 +434,6 @@ const LeftSidebar = () => {
                 viewport={{ once: true }}
                 className="w-[2.875rem] h-[5.75rem] flex-shrink-0 bg-white dark:bg-[#171717] transition-colors ease-in-out duration-300 rounded-full flex flex-col relative"
               >
-                
                 <div className=" rounded-full flex justify-center items-center p-2 flex-shrink-0 bg-[#525252] w-[2.1rem] absolute left-1.5 pl-[2px] top-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
