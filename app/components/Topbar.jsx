@@ -36,7 +36,7 @@ const Topbar = () => {
       transition={{ duration: 1 }}
       className="topbar relative z-20 border-b-[1px] grid grid-cols-3 gap-8 bg-[#E5EAEF] dark:border-none dark:bg-[#262626]"
     >
-      <div className="max-md:flex hidden pl-10">
+      <div className="max-md:flex hidden pl-6">
         <svg
          ref={svgRef}
           xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ const Topbar = () => {
         </p>
       </div>
 
-      <div className="flex flex-row gap-6 items-center justify-between  pr-10">
+      <div className="flex flex-row gap-6 items-center justify-between  max-md:pr-6">
         <div className="flex max-md:hidden flex-shrink-0 items-center justify-center relative col-span-2">
           <svg
             className="absolute left-0 my-2 ml-3"

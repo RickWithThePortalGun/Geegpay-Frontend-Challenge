@@ -50,7 +50,7 @@ body{
 }
 
 .topbar {
-  @apply top-0 h-[4.5rem] fixed flex w-full items-center justify-between bg-[#fafafa] py-3;
+  @apply top-0 h-[4.5rem] fixed flex w-full items-center justify-between bg-[#fafafa] py-1;
 }
 
 .leftsidebar {
