@@ -53,8 +53,8 @@ const Topbar = () => {
           />
         </svg>
       </div>
-      <div className="max-md:flex max-xs:hidden hidden pl-10 items-center">
-        <p className="text-typography dark:text-[#e5e5e5] tracking-tight leading-[1.75rem] text-[1.25rem] font-semibold">
+      <div className="max-md:flex hidden pl-10 items-center">
+        <p className="text-typography dark:text-[#e5e5e5] tracking-tight leading-[1.75rem] max-sm:text-[1rem] text-[1.25rem] font-semibold">
           Dashboard
         </p>
       </div>
