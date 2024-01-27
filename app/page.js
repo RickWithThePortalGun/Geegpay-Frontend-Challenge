@@ -164,7 +164,7 @@ const Home = () => {
   };
 
   const labels = [
-    "Jan",
+    ["Jan",
     "Feb",
     "Mar",
     "Apr",
@@ -175,15 +175,18 @@ const Home = () => {
     "Sep",
     "Okt",
     "Nov",
-    "Des",
+    "Des",],["2001",'2002',"2003", "2004","2005", "2006", "2007","2008","2009","2010"], ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],['Week 1', 'Week 2', 'Week 3', 'Week 4','Week 5', 'Week 6', 'Week 7']
   ];
 
   const data = {
-    labels,
+    labels:selectedValue === "Weekly" ? labels[3] :
+    selectedValue === "Yearly" ? labels[1] :
+    selectedValue === "Daily" ? labels[2] :
+    selectedValue === "Monthly" ? labels[0] : "",
     datasets: [
       {
         label: "",
-        data: labels.map(() => faker.number.int({ min: 0, max: 50000 })),
+        data: selectedValue=="Monthly" ? labels[0].map(() => faker.number.int({ min: 0, max: 50000 })) : selectedValue=="Yearly"? labels[1].map(() => faker.number.int({ min: 0, max: 50000 })): selectedValue=="Daily"? labels[2].map(() => faker.number.int({ min: 0, max: 50000 })):selectedValue=="Weekly"? labels[3].map(() => faker.number.int({ min: 0, max: 50000 })):"" ,
         backgroundColor: "rgba(52, 202, 165, 0.10)",
         hoverBackgroundColor: function (context) {
           const chart = context.chart;
@@ -242,6 +245,9 @@ const Home = () => {
               {isMenuVisible ? (
               <div className={`absolute max-sm:w-[8rem] justify-center flex bg-[#ffffff] border-[1px] border-[#edf2f7] max-smallest:right-[0.2rem] right-[0.5rem] top-[110%] h-fit w-[6em] dark:border-b-[#34CAA5] dark:border-b-[1px] dark:border-t-0 dark:border-r-0 dark:border-l-0 dark:bg-[#252525] rounded-lg overflow-hidden`}>
                 <div className="flex flex-col gap-2  pl-2 pt-2 pb-2">
+                <p onClick={() => handlePClick('Daily')} className="hover:bg-[#e5e5e5] text-[#272727] cursor-pointer max-sm:text-[0.8rem] dark:text-[#e5e5e5]  dark:hover:text-[#272727] dark:hover:bg-[#e5e5e5] px-2 rounded-lg">
+                    Daily
+                  </p>
                   <p onClick={() => handlePClick('Weekly')} className=" hover:bg-[#e5e5e5] text-[#272727] cursor-pointer dark:text-[#e5e5e5] max-sm:text-[0.8rem] dark:hover:text-[#272727] dark:hover:bg-[#e5e5e5] px-2 rounded-lg">
                     Weekly
                   </p>
